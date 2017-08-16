@@ -9,7 +9,7 @@ h1, h2, h3 {
 
 body {
     font-family: Verdana, Arial, sans-serif;
-    background: #494449 url(/img/blackboard.png) no-repeat fixed;
+    background: #494449 url(/img/motd/blackboard.png) no-repeat fixed;
     background-size: cover;
     font-size: 20px;
     color: #eee;
