@@ -1,0 +1,116 @@
+/* CSS Reset */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 95%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, select, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+/* CSS Reset */
+
+a:link, a:active, a:visited, a:hover  {
+    text-decoration: none;
+}
+
+body {
+    font-family: Verdana, Arial, sans-serif;
+    background-size: cover;
+    font-size: 18px;
+}
+
+/* TODO: make the design responsive */
+#content {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 800px;
+    width: 75%;
+    min-width: 560px;
+    padding: 5px;
+}
+
+.headerText {
+    margin: 20px 5px;
+    font-size: 30px;
+}
+
+.box {
+    background: #333;
+    border: #fff solid 2px;
+    padding: 10px 20px;
+    clear: both;
+}
+
+.clearer {
+    clear: both;
+    border: none;
+    padding: 10px;
+}
+
+.admins {
+    margin: 5px;
+    text-align: center;
+}
+
+.admins img {
+    height: 65px;
+    width: 65px;
+}
+
+.tooltip img {
+    border: 2px solid #333;
+}
+
+.tooltip {
+    outline: none;
+}
+
+.tooltip strong {
+    line-height: 30px;
+}
+
+.tooltip:hover {
+    text-decoration: none;
+}
+
+.tooltip span {
+    z-index: 10;
+    display: none;
+    padding: 14px 21px;
+    margin-top: -16px;
+    margin-left: -324px;
+    width: 300px;
+    line-height: 16px;
+    border-radius: 4px;
+}
+
+.tooltip span img {
+    float: right;
+}
+
+/* Place the first tooltip on the right to avoid collision with the side of the screen */
+.tooltip:first-child span {
+    margin-left: -93px;
+}
+
+.tooltip:first-child span img {
+    float: left;
+}
+
+.tooltip:hover span {
+    display: inline;
+    position: absolute;
+    border: 2px solid #FFF;
+    color: #EEE;
+    background: #333 linear-gradient(#222, #444) repeat-x 0 0;
+    opacity: 0.9;
+}
