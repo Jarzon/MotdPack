@@ -7,27 +7,27 @@ h1, h2, h3 {
     text-shadow: 0 2px #000, 2px 0 #000, -2px 0 #000, 0-2px #000;
 }
 
+a:link, a:active, a:visited, a:hover {
+    color: #00f;
+}
+
 body {
     font-family: Verdana, Arial, sans-serif;
     background: #494449 url(/img/motd/blackboard.png) no-repeat fixed;
     background-size: cover;
     font-size: 20px;
-    color: #eee;
+    color: #fff;
 }
 
 #logo {
     text-align: center;
 }
 
-#logo img {
-    width: 40%;
-}
-
 .headerText {
     margin: 20px 5px;
     color: #333;
-    text-shadow: 1px 1px #777, -1px -1px #222;
     font-size: 30px;
+    text-shadow: 1px 1px #777, -1px -1px #222;
 }
 
 .connectedRatio {
@@ -77,12 +77,6 @@ ul.rules {
     vertical-align: middle;
 }
 
-.rules li:before {
-    content: "★";
-    color: #400066;
-    padding: 0 5px;
-}
-
 .links {
     text-align: center;
 }
@@ -103,11 +97,11 @@ ul.rules {
 
 .me {
     text-shadow: 0 1px #222, 1px 0 #222, -1px 0 #222, 0 -1px #222, 1px 1px #222, 1px -1px #222, -1px 1px #222, 1px -1px #222;
-    color: #400066;
+    color: #fff;
 }
 
 .me a {
-    color: #400066;
+    color: #fff;
 }
 
 .music {
@@ -142,7 +136,7 @@ input[type="submit"] {
     border: 1px solid #222;
     border-radius: 5px;
 
-    background: #400066;
+    background: #666;
 
     text-align: center;
 }
