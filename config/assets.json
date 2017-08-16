@@ -1,10 +1,4 @@
 {
-  "js": {
-    "files": {
-      "motd.js": ["vendor/motdpack/assets/js/motd.js"]
-    },
-    "destination": "public/js"
-  },
   "css": {
     "files": {
       "motd.css": ["vendor/motdpack/assets/css/motd.css"]
