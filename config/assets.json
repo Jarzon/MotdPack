@@ -1,19 +1,19 @@
 {
   "js": {
     "files": {
-      "main.js": ["vendor/motdpack/assets/js/motd.js"]
+      "motd.js": ["vendor/motdpack/assets/js/motd.js"]
     },
     "destination": "public/js"
   },
   "css": {
     "files": {
-      "main.css": ["vendor/motdpack/assets/css/motd.css"]
+      "motd.css": ["vendor/motdpack/assets/css/motd.css"]
     },
     "destination": "public/css"
   },
   "img": {
     "files": {
-      "": ["vendor/motdpack/assets/img/*.*"]
+      "motd": ["vendor/motdpack/assets/img/*.*"]
     },
     "destination": "public/img"
   }
