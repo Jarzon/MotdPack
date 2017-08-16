@@ -1,10 +1,4 @@
 {
-  "css": {
-    "files": {
-      "motd.css": ["vendor/motdpack/assets/css/motd.css"]
-    },
-    "destination": "public/css"
-  },
   "img": {
     "files": {
       "motd": ["vendor/motdpack/assets/img/*.*"]
