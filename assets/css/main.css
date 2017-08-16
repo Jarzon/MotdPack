@@ -1,0 +1,148 @@
+h1, h2, h3 {
+    text-align: center;
+    color: #999;
+    margin: 5px;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0 2px #000, 2px 0 #000, -2px 0 #000, 0-2px #000;
+}
+
+body {
+    font-family: Verdana, Arial, sans-serif;
+    background: #494449 url(/img/blackboard.png) no-repeat fixed;
+    background-size: cover;
+    font-size: 20px;
+    color: #eee;
+}
+
+#logo {
+    text-align: center;
+}
+
+#logo img {
+    width: 40%;
+}
+
+.headerText {
+    margin: 20px 5px;
+    color: #333;
+    text-shadow: 1px 1px #777, -1px -1px #222;
+    font-size: 30px;
+}
+
+.connectedRatio {
+    float: left;
+}
+
+.playtimeCounter {
+    float: right;
+}
+
+.headerText a {
+    color: #333;
+}
+
+.madeBy {
+    font-size: 15px;
+    margin: 2px;
+    float: right;
+}
+
+.box {
+    background: #333 linear-gradient(#393939, #090909);
+    border: #000 solid 2px;
+    border-radius: 10px;
+    padding: 8px;
+    clear: both;
+}
+
+hr {
+    clear: both;
+    border: none;
+    padding: 10px;
+}
+
+ul.rules {
+    margin-left: 25px;
+    font-size: 18px;
+    list-style: none;
+    color: #bbb;
+    text-shadow: 2px 2px #111;
+    vertical-align: text-top;
+}
+
+.rules li {
+    margin: 0;
+    padding: 0 0 1px 28px;
+    vertical-align: middle;
+}
+
+.rules li:before {
+    content: "★";
+    color: #400066;
+    padding: 0 5px;
+}
+
+.links {
+    text-align: center;
+}
+
+.warning {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    text-align: center;
+}
+
+.scoreboard {
+    width: 100%;
+    color: #aaa;
+    margin: 10px 0;
+}
+
+.me {
+    text-shadow: 0 1px #222, 1px 0 #222, -1px 0 #222, 0 -1px #222, 1px 1px #222, 1px -1px #222, -1px 1px #222, 1px -1px #222;
+    color: #400066;
+}
+
+.me a {
+    color: #400066;
+}
+
+.music {
+    width: 100%;
+    color: #aaa;
+    margin: 10px 0;
+}
+
+input[type="submit"] {
+    padding: 5px;
+}
+
+/* Pagination */
+.pagination {
+    text-align: center;
+}
+
+.pageNumberLink {
+    padding: 5px 10px;
+
+    border: 1px solid #000;
+    border-radius: 5px;
+
+    background: #222;
+
+    text-align: center;
+}
+
+.pageNumber {
+    padding: 5px 10px;
+
+    border: 1px solid #222;
+    border-radius: 5px;
+
+    background: #400066;
+
+    text-align: center;
+}
