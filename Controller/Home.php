@@ -9,10 +9,6 @@ use Symfony\Component\DomCrawler\Crawler;
 
 use MotdPack\Service\Paginator;
 
-/**
- * Class Home
- *
- */
 class Home extends Controller
 {
     function getNumbers($db) {
@@ -46,11 +42,6 @@ class Home extends Controller
                 }
             }
         }
-
-        define( 'SQ_SERVER_ADDR', '66.150.164.236' );
-        define( 'SQ_SERVER_PORT', 27015 );
-        define( 'SQ_TIMEOUT',     1 );
-        define( 'SQ_ENGINE',      SourceQuery::SOURCE );
 
         $query = new sourceQuery();
 
@@ -101,8 +92,7 @@ class Home extends Controller
             if(strcmp($_POST['password'], 'Ijustlovekillingbotty') === 0) {
                 $_SESSION['auth'] = true;
 
-                header('location: /botty/');
-                exit();
+                $this->redirect('/botty/');
             }
         }
 
@@ -133,7 +123,7 @@ class Home extends Controller
 // If steam is down, if there is a cached admin list show it or else dont show anything
         try {
             $client = new Client();
-            $crawler = $client->request('GET', 'http://steamcommunity.com/groups/OHavenTf/members?content_only=true');
+            $crawler = $client->request('GET', 'http://steamcommunity.com/groups/'.STEAM_GROUP_NAME.'/members?content_only=true');
         }
         catch( Exception $e ) {
             if($nodeValues) $getLastMod = time();
@@ -188,14 +178,10 @@ class Home extends Controller
 
         }
 
-        $this->addVar('admins', '');
-
-        if($getLastMod > 0) {
-            $this->addVar('admins', $nodeValues);
-        }
-
         // load views
-        $this->design('home/index');
+        $this->design('home/index', 'MotdPack', [
+            'admins' => $getLastMod
+        ]);
         $db->close();
     }
 
@@ -207,14 +193,14 @@ class Home extends Controller
 
     public function message($message)
     {
-        $this->addVar('message', $message);
-
-        $this->design('home/message');
+        $this->design('home/message', 'MotdPack', [
+            'message' => $message
+        ]);
     }
 
     public function server($port = 27015)
     {
-        header("Location: steam://connect/66.150.164.236:$port");
+        $this->redirect('steam://connect/'.SQ_SERVER_ADDR.':'.SQ_SERVER_PORT);
     }
 
     public function scoreboard($page = 1)
@@ -315,15 +301,13 @@ class Home extends Controller
                 }
             }
 
+            $this->addVar('pagination', $paginator->showPages());
+
         } else echo 'Error';
 
-        $this->addVar('playerList', $list);
+        $this->design('home/scoreboard', 'MotdPack', [
 
-        if($query) {
-            $this->addVar('pagination', $paginator->showPages());
-        }
-
-        $this->design('home/scoreboard');
+        ]);
         $db->close();
     }
 }

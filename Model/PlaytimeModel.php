@@ -3,7 +3,7 @@ namespace MotdPack\MotdPack\Model;
 
 use Prim\Model;
 
-class BaseModel extends Model
+class PlaytimeModel extends Model
 {
     public function getAllRows()
     {
