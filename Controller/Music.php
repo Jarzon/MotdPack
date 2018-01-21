@@ -3,8 +3,8 @@ namespace MotdPack\Controller;
 
 use Prim\Controller;
 
-use MotdPack\Service\Paginator;
 use MotdPack\Service\Uploader;
+use PrimUtilities\Paginator;
 
 function file_upload_max_size() {
     static $max_size = -1;

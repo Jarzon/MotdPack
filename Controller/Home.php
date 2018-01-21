@@ -3,11 +3,10 @@ namespace MotdPack\Controller;
 
 use Prim\Controller;
 
+use PrimUtilities\Paginator;
 use xPaw\SourceQuery\SourceQuery;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
-
-use MotdPack\Service\Paginator;
 
 class Home extends Controller
 {
