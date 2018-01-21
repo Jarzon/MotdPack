@@ -1,5 +1,5 @@
 {
-  "name": "motdpack",
+  "name": "jarzon/motdpack",
   "type": "project",
   "autoload": {
     "psr-4": {"MotdPack\\": "/"}
@@ -11,7 +11,9 @@
     "php": ">=7.0.0",
     "jarzon/prim": "0.6.*",
     "jarzon/primutilities": "~0.7.1",
-    "robmorgan/phinx": "^0.6.4"
+    "robmorgan/phinx": "^0.6.4",
+    "xpaw/php-source-query-class": "^1.0",
+    "fabpot/goutte": "^3.1"
   },
   "config": {
     "bin-dir": "bin"
