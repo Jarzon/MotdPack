@@ -1,5 +1,5 @@
 <?php
-namespace MotdPack\Service;
+namespace Jarzon\MotdPack\Service;
 
 class Paginator
 {
