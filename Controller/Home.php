@@ -82,9 +82,6 @@ class Home extends Controller
         $this->addVar('playtime', $playtime);
     }
 
-    /**
-     * PAGE: login
-     */
     public function login()
     {
         if(isset($_POST['password'])) {
@@ -98,9 +95,6 @@ class Home extends Controller
         $this->design('home/login');
     }
 
-    /**
-     * PAGE: index
-     */
     public function index()
     {
         // Fuck you past me
@@ -122,6 +116,12 @@ class Home extends Controller
 // If steam is down, if there is a cached admin list show it or else dont show anything
         try {
             $client = new Client();
+            if(ENV === 'dev') {
+                $client->setClient(new \GuzzleHttp\Client([
+                    // DISABLE SSL CERTIFICATE CHECK
+                    'verify' => false,
+                ]));
+            }
             $crawler = $client->request('GET', 'http://steamcommunity.com/groups/'.STEAM_GROUP_NAME.'/members?content_only=true');
         }
         catch( Exception $e ) {
