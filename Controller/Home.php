@@ -42,7 +42,7 @@ class Home extends Controller
             }
         }
 
-        $query = new sourceQuery();
+        $query = new SourceQuery();
 
         $infos = [];
 
@@ -140,7 +140,7 @@ class Home extends Controller
                     // Add _full to the img name to get full size avatar
                     $avatar = $node->filter('div.playerAvatar img')->attr('src');
                     $avatar = explode('.', $avatar);
-                    $avatar[3] .= '_full';
+                    $avatar[count($avatar)-2] .= '_full';
                     $avatar = implode('.', $avatar);
 
                     $name = htmlentities($node->filter('div.member_block_content > div > a')->text());
