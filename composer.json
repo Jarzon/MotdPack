@@ -2,7 +2,7 @@
   "name": "jarzon/motdpack",
   "type": "project",
   "autoload": {
-    "psr-4": {"Jarzon\\MotdPack\\": "/"}
+    "psr-4": {"MotdPack\\": "/"}
   },
   "autoload-dev": {
     "psr-4": {"Tests\\": "tests/"}
