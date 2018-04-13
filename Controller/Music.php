@@ -1,9 +1,9 @@
 <?php
-namespace Jarzon\MotdPack\Controller;
+namespace MotdPack\Controller;
 
 use Prim\Controller;
 
-use Jarzon\MotdPack\Service\Uploader;
+use MotdPack\Service\Uploader;
 use PrimUtilities\Paginator;
 
 function file_upload_max_size() {

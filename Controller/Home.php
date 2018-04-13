@@ -1,5 +1,5 @@
 <?php
-namespace Jarzon\MotdPack\Controller;
+namespace MotdPack\Controller;
 
 use Prim\Controller;
 

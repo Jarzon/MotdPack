@@ -7,4 +7,3 @@ $this->get('/scoreboard/[{page:\d+}]', 'MotdPack\Home', 'scoreboard');
 $this->get('/server[/{port:\d+}]', 'MotdPack\Home', 'server');
 
 $this->addRoute(['GET', 'POST'], '/login', 'MotdPack\Home', 'login');
-
