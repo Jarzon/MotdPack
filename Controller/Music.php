@@ -70,8 +70,14 @@ class Music extends Controller
 
         $playerPerPage = 15;
 
-        $query = $db->query('SELECT COUNT(*) AS number FROM smusic_song');
-        $res = $query->fetch_object();
+        if($query = $db->query('SELECT COUNT(*) AS number FROM smusic_song')) {
+            $res = $query->fetch_object();
+        } else {
+            $res = new class{
+                public $number = 0;
+                public $min_time = 0;
+            };
+        }
 
         $paginator = new Paginator($page, $res->number, $playerPerPage, 5);
         $first = $paginator->getFirstPageElement();
@@ -89,7 +95,6 @@ class Music extends Controller
         if(isset($_SESSION['auth'])) $auth = $_SESSION['auth'];
         $this->addVar('admin', $auth);
 
-        // load views
         $this->design('music/index');
         $db->close();
     }
