@@ -1,5 +1,5 @@
 <?php
-namespace MotdPack\MotdPack\Model;
+namespace Jarzon\MotdPack\Model;
 
 use Prim\Model;
 
