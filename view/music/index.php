@@ -16,7 +16,7 @@
             <tr>
                 <td>♫ <a href="play/<?=urlencode($song['name'])?>"><?=$song['name']?></a></td>
                 <?php if($admin):?>
-                    <td><?=$song->playCount?></td>
+                    <td><?=$song['playCount']?></td>
                     <td><a href="edit/<?=$song['id']?>">Edit</a></td>
                 <?php endif?>
             </tr>
