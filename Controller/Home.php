@@ -82,19 +82,6 @@ class Home extends Controller
         $this->addVar('playtime', $playtime);
     }
 
-    public function login()
-    {
-        if(isset($_POST['password'])) {
-            if(strcmp($_POST['password'], 'Ijustlovekillingbotty') === 0) {
-                $_SESSION['auth'] = true;
-
-                $this->redirect('/botty/');
-            }
-        }
-
-        $this->design('home/login');
-    }
-
     public function index()
     {
         // Fuck you past me

@@ -1,4 +1,6 @@
 <?php
+define( 'ADMIN_PASSWORD', 'Ijustlovekillingbotty' );
+
 define( 'STEAM_GROUP_NAME', 'valve' );
 
 define( 'SQ_SERVER_ADDR', '127.0.0.1' );

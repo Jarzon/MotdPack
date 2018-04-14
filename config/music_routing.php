@@ -10,3 +10,5 @@ $this->addGroup('/music', function($r) {
     $r->addRoute(['GET', 'POST'], '/edit/{song:\d+}', 'MotdPack\Music', 'edit');
     $r->get('/delete/{song:\d+}', 'MotdPack\Music', 'delete');
 });
+
+$this->addRoute(['GET', 'POST'], '/login', 'MotdPack\Music', 'login');

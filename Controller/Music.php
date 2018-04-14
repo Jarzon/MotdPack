@@ -56,11 +56,23 @@ class Music extends Controller
         return $this->db->real_escape_string(htmlspecialchars($input));
     }
 
+    public function login()
+    {
+        if(isset($_POST['password'])) {
+            if(strcmp($_POST['password'], ADMIN_PASSWORD) === 0) {
+                $_SESSION['auth'] = true;
+
+                $this->redirect('/music/');
+            }
+        }
+
+        $this->design('music/login');
+    }
+
     public function loginVerification()
     {
         if(!$_SESSION['auth']) {
-            header('location: /login');
-            exit();
+            $this->redirect('/login');
         }
     }
 
