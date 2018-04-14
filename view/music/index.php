@@ -10,15 +10,23 @@
             <th>Edit</th>
         <?php endif?>
     </tr>
-    <?php if(isset($songList)) : while($song = $songList->fetch_object()) : ?>
+    <?php
+    if($songList):
+        foreach($songList as $song): ?>
+            <tr>
+                <td>♫ <a href="play/<?=urlencode($song['name'])?>"><?=$song['name']?></a></td>
+                <?php if($admin):?>
+                    <td><?=$song->playCount?></td>
+                    <td><a href="edit/<?=$song['id']?>">Edit</a></td>
+                <?php endif?>
+            </tr>
+        <?php
+        endforeach;
+    else: ?>
         <tr>
-            <td>♫ <a href="play/<?=urlencode($song->name)?>"><?=$song->name?></a></td>
-            <?php if($admin):?>
-                <td><?=$song->playCount?></td>
-                <td><a href="edit/<?=$song->song_id?>">Edit</a></td>
-            <?php endif?>
+            <td colspan="1">There is no song</td>
         </tr>
-    <?php endwhile; endif; ?>
+    <?php endif; ?>
 </table>
 <p class="pagination">
     <?=$pagination?><br>

@@ -94,20 +94,19 @@ class Music extends Controller
         $paginator = new Paginator($page, $res->number, $playerPerPage, 5);
         $first = $paginator->getFirstPageElement();
 
-        $query = $db->query('SELECT MS.song_id, MS.name, MS.playCount
+        $songList = [];
+
+        if ($query = $db->query('SELECT MS.id, MS.name, MS.playCount
           FROM smusic_song MS
-          ORDER BY MS.song_id
-          LIMIT '.$first.', '.$playerPerPage);
+          ORDER BY MS.id')) {
+            $songList = $query->fetch_all(MYSQLI_ASSOC);
+        }
 
-        $this->addVar('songList', $query);
-
-        $this->addVar('pagination', $paginator->showPages());
-
-        $auth = false;
-        if(isset($_SESSION['auth'])) $auth = $_SESSION['auth'];
-        $this->addVar('admin', $auth);
-
-        $this->design('music/index');
+        $this->design('music/index', 'MotdPack', [
+            'admin' => (isset($_SESSION['auth']))? $_SESSION['auth']: false,
+            'songList' => $songList,
+            'pagination' => $paginator->showPages(),
+        ]);
         $db->close();
     }
 
@@ -115,24 +114,23 @@ class Music extends Controller
     {
         $db = $this->mysqliConnection();
 
-        if ($query = $db->query('SELECT SS.song_id, SS.name, SS.file FROM smusic_song SS WHERE SS.name LIKE "%'.urldecode($song).'%" LIMIT 0, 1 ')) {
+        if ($query = $db->query('SELECT SS.id, SS.name, SS.file FROM smusic_song SS WHERE SS.name LIKE "%'.urldecode($song).'%" LIMIT 0, 1 ')) {
             if($query->num_rows == 1) {
-                $song = $query->fetch_object();
+                $song = $query->fetch_assoc();
 
-                $db->query('UPDATE smusic_song SS SET SS.playCount = playCount + 1 WHERE SS.song_id = '.$song->song_id.' LIMIT 1');
-
-                $this->addVar('song', $song);
+                $db->query('UPDATE smusic_song SS SET SS.playCount = playCount + 1 WHERE SS.id = '.$song['id'].' LIMIT 1');
             } else {
-                header('Location: /music/');
-                exit;
+                $this->redirect('/music/');
             }
         }
 
         if($volume > 10 || $volume < 0) $volume = 4;
-        $this->addVar('volume', $volume);
 
         // load views
-        $this->design('music/play');
+        $this->design('music/play', 'MotdPack', [
+            'song' => $song,
+            'volume' => $volume
+        ]);
         $db->close();
     }
 
@@ -181,7 +179,7 @@ class Music extends Controller
             exit();
         }
 
-        $query = $db->query('SELECT song_id, name, file, playCount FROM smusic_song WHERE song_id = '.$song.' LIMIT 0, 1');
+        $query = $db->query('SELECT id, name, file, playCount FROM smusic_song WHERE id = '.$song.' LIMIT 0, 1');
         if(!$query) {
             header('Location: /music/');
             exit();
@@ -191,7 +189,7 @@ class Music extends Controller
 
         if(isset($_POST['submit'])) {
             $name = $this->sanatize($_POST['name']);
-            $db->query('UPDATE smusic_song SET name = "'.$name.'" WHERE song_id = '.$song->song_id);
+            $db->query('UPDATE smusic_song SET name = "'.$name.'" WHERE id = '.$song->id);
             $song->name = $name;
         }
 
@@ -213,7 +211,7 @@ class Music extends Controller
             exit();
         }
 
-        $db->query("DELETE FROM smusic_song WHERE song_id = $song LIMIT 1");
+        $db->query("DELETE FROM smusic_song WHERE id = $song LIMIT 1");
 
         header('Location: /music/');
         exit();
