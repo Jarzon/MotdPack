@@ -166,7 +166,7 @@ class Home extends Controller
 
         // load views
         $this->design('home/index', 'MotdPack', [
-            'admins' => $getLastMod
+            'admins' => $nodeValues
         ]);
         $db->close();
     }
@@ -205,18 +205,13 @@ class Home extends Controller
             }
         }
 
-        if (apcu_exists('playerTime') && apcu_exists('playerNumber')) {
-            $playerTime = apcu_fetch('playerTime');
-            $playerNumber = apcu_fetch('playerNumber');
-        } else {
-            $query = $db->query('SELECT SUM(time) AS playTime, COUNT(*) AS playerNumber FROM playtime WHERE name != ""');
+        $playerTime = 0;
+        $playerNumber = 0;
+
+        if($query = $db->query('SELECT SUM(time) AS playTime, COUNT(*) AS playerNumber FROM playtime')) {
             $res = $query->fetch_object();
             $playerTime = $res->playTime;
             $playerNumber = $res->playerNumber;
-
-            // Keep the values for 1 hour
-            apcu_add('playerTime', $playerTime, 360);
-            apcu_add('playerNumber', $playerNumber, 360);
         }
 
         // Pagination
@@ -247,9 +242,7 @@ class Home extends Controller
 
         $query = $db->query($query);
 
-        $this->addVar('playerNumber', $playerNumber);
-        $this->addVar('playerTime', ceil((($playerTime / 60) / 60)));
-        $this->addVar('pagination', '');
+        $playerTime = ceil((($playerTime / 60) / 60));
 
         $list = [];
 
@@ -287,13 +280,15 @@ class Home extends Controller
                 }
             }
 
-            $this->addVar('pagination', $paginator->showPages());
-
-        } else echo 'Error';
+        }
 
         $this->design('home/scoreboard', 'MotdPack', [
-
+            'playerNumber' => $playerNumber,
+            'playerTime' => $playerTime,
+            'playerList' => $list,
+            'pagination' => $paginator->showPages()
         ]);
+
         $db->close();
     }
 }
