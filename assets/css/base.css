@@ -99,7 +99,7 @@ body {
 
 /* Place the first tooltip on the right to avoid collision with the side of the screen */
 .tooltip:first-child span {
-    margin-left: -93px;
+    margin-left: -133px;
 }
 
 .tooltip:first-child span img {
