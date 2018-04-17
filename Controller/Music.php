@@ -181,21 +181,20 @@ class Music extends Controller
 
         $query = $db->query('SELECT id, name, file, playCount FROM smusic_song WHERE id = '.$song.' LIMIT 0, 1');
         if(!$query) {
-            header('Location: /music/');
-            exit();
+            $this->redirect('/music/');
         }
-        $song = $query->fetch_object();
+        $song = $query->fetch_assoc();
 
 
         if(isset($_POST['submit'])) {
             $name = $this->sanatize($_POST['name']);
-            $db->query('UPDATE smusic_song SET name = "'.$name.'" WHERE id = '.$song->id);
-            $song->name = $name;
+            $db->query('UPDATE smusic_song SET name = "'.$name.'" WHERE id = '.$song['id']);
+            $song['name'] = $name;
         }
 
-        $this->addVar('song', $song);
-
-        $this->design('music/edit');
+        $this->design('music/edit', 'MotdPack', [
+            'song' => $song
+        ]);
         $db->close();
     }
 
