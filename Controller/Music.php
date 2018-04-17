@@ -4,7 +4,7 @@ namespace MotdPack\Controller;
 use Prim\Controller;
 
 use MotdPack\Service\Uploader;
-use PrimUtilities\Paginator;
+use Jarzon\Pagination;
 
 function file_upload_max_size() {
     static $max_size = -1;
@@ -91,7 +91,7 @@ class Music extends Controller
             };
         }
 
-        $paginator = new Paginator($page, $res->number, $playerPerPage, 5);
+        $paginator = new Pagination($page, $res->number, $playerPerPage, 5);
         $first = $paginator->getFirstPageElement();
 
         $songList = [];

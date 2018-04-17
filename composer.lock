@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8643a1db755484b89244213be8f0369",
+    "content-hash": "ffc7c15d8a00ca6ce1a0fffcbeca30ce",
     "packages": [
         {
             "name": "fabpot/goutte",
@@ -243,22 +243,49 @@
             "time": "2017-03-20T17:10:46+00:00"
         },
         {
-            "name": "jarzon/prim",
-            "version": "v0.10.1",
+            "name": "jarzon/pagination",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Jarzon/Prim.git",
-                "reference": "084a8ed122be9ba88d74db0d43622738333683ce"
+                "url": "https://github.com/Jarzon/Pagination.git",
+                "reference": "247b54930dc44628bde4a49fd1c6714f97e89d74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jarzon/Prim/zipball/084a8ed122be9ba88d74db0d43622738333683ce",
-                "reference": "084a8ed122be9ba88d74db0d43622738333683ce",
+                "url": "https://api.github.com/repos/Jarzon/Pagination/zipball/247b54930dc44628bde4a49fd1c6714f97e89d74",
+                "reference": "247b54930dc44628bde4a49fd1c6714f97e89d74",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "6.2.*"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Jarzon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2018-02-01T03:48:20+00:00"
+        },
+        {
+            "name": "jarzon/prim",
+            "version": "v0.11.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jarzon/Prim.git",
+                "reference": "ac77aa6c2237f065b87d4c8a442ebe6e81f630fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jarzon/Prim/zipball/ac77aa6c2237f065b87d4c8a442ebe6e81f630fc",
+                "reference": "ac77aa6c2237f065b87d4c8a442ebe6e81f630fc",
                 "shasum": ""
             },
             "require": {
+                "ext-pdo": "*",
                 "nikic/fast-route": "1.2.*",
-                "php": ">=7.0.0"
+                "php": ">=7.2.0"
             },
             "require-dev": {
                 "mikey179/vfsstream": "1.6.x",
@@ -285,34 +312,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2018-01-13T18:57:06+00:00"
-        },
-        {
-            "name": "jarzon/primutilities",
-            "version": "v0.7.22",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Jarzon/PrimUtilities.git",
-                "reference": "c4d1ea70aacbaa13e685b706376649b893f8ed84"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Jarzon/PrimUtilities/zipball/c4d1ea70aacbaa13e685b706376649b893f8ed84",
-                "reference": "c4d1ea70aacbaa13e685b706376649b893f8ed84",
-                "shasum": ""
-            },
-            "require-dev": {
-                "jarzon/prim": "0.6.*",
-                "phpunit/phpunit": "6.2.*"
-            },
-            "type": "project",
-            "autoload": {
-                "psr-4": {
-                    "PrimUtilities\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-10-11T01:19:16+00:00"
+            "time": "2018-01-25T20:34:34+00:00"
         },
         {
             "name": "nikic/fast-route",

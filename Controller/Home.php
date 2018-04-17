@@ -3,7 +3,7 @@ namespace MotdPack\Controller;
 
 use Prim\Controller;
 
-use PrimUtilities\Paginator;
+use Jarzon\Pagination;
 use xPaw\SourceQuery\SourceQuery;
 use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
@@ -217,7 +217,7 @@ class Home extends Controller
         // Pagination
         $playerPerPage = 15;
 
-        $paginator = new Paginator($page, $playerNumber, $playerPerPage, 5);
+        $paginator = new Pagination($page, $playerNumber, $playerPerPage, 5);
         $page = $paginator->getPage();
         $first = $paginator->getFirstPageElement();
 
