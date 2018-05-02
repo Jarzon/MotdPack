@@ -175,8 +175,7 @@ class Music extends Controller
 
         $song = intval($song);
         if ($song <= 0) {
-            header('Location: /music/');
-            exit();
+            $this->redirect('/music/');
         }
 
         $query = $db->query('SELECT id, name, file, playCount FROM smusic_song WHERE id = '.$song.' LIMIT 0, 1');
@@ -206,13 +205,11 @@ class Music extends Controller
 
         $song = intval($song);
         if ($song <= 0) {
-            header('Location: /music/');
-            exit();
+            $this->redirect('/music/');
         }
 
         $db->query("DELETE FROM smusic_song WHERE id = $song LIMIT 1");
 
-        header('Location: /music/');
-        exit();
+        $this->redirect('/music/');
     }
 }
