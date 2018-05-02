@@ -103,7 +103,7 @@ class Music extends Controller
         }
 
         $this->design('music/index', 'MotdPack', [
-            'admin' => (isset($_SESSION['auth']))? $_SESSION['auth']: false,
+            'admin' => $_SESSION['auth'] ?? false,
             'songList' => $songList,
             'pagination' => $paginator->showPages(),
         ]);
