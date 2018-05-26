@@ -228,12 +228,14 @@ class Music extends Controller
             $this->redirect('/');
         }
 
-        $settings = $musicModel->getSettings($steamid);;
+        $settings = $musicModel->getSettings($steamid);
 
         if(isset($_POST['submit'])) {
             $musicModel->saveSettings($_POST['volume'], $steamid);
 
             $settings->volume = $_POST['volume'];
+
+            $this->addVar('message', ['ok', 'The settings have been updated.']);
         }
 
         $this->design('music/settings', 'MotdPack', [

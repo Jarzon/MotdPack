@@ -1,5 +1,9 @@
 <h1 class="rules">Music settings</h1>
 
+<?php if(isset($message)): ?>
+    <div class="<?=$message[0]?>"><?=$message[1]?></div>
+<?php endif; ?>
+
 <form method="post">
     <label for="volume">Music volume:</label>
     <input id="volume" name="volume" type="range" value="<?=$settings['volume']?>" style="width: 50%;"><br>
