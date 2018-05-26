@@ -1,6 +1,8 @@
 <?php
 namespace MotdPack\Controller;
 
+use MotdPack\Model\MusicModel;
+use MotdPack\Model\PlaytimeModel;
 use Prim\Controller;
 
 use MotdPack\Service\Uploader;
@@ -118,7 +120,7 @@ class Music extends Controller
             if($query->num_rows == 1) {
                 $song = $query->fetch_assoc();
 
-                $db->query('UPDATE smusic_song SS SET SS.playCount = playCount + 1 WHERE SS.id = '.$song['id'].' LIMIT 1');
+                $db->query('UPDATE smusic_song SS SET SS.playCount = SS.playCount + 1 WHERE SS.id = '.$song['id'].' LIMIT 1');
             } else {
                 $this->redirect('/music/');
             }
@@ -211,5 +213,31 @@ class Music extends Controller
         $db->query("DELETE FROM smusic_song WHERE id = $song LIMIT 1");
 
         $this->redirect('/music/');
+    }
+
+    public function settings()
+    {
+        /**
+         * @var MusicModel $musicModel
+         * @var PlaytimeModel $playtimeModel
+         */
+        $musicModel = $this->getModel('MusicModel', 'MotdPack');
+        $playtimeModel = $this->getModel('PlaytimeModel', 'MotdPack');
+
+        if(!$steamid = $playtimeModel->getUser($_SERVER['REMOTE_ADDR'])) {
+            $this->redirect('/');
+        }
+
+        $settings = $musicModel->getSettings($steamid);;
+
+        if(isset($_POST['submit'])) {
+            $musicModel->saveSettings($_POST['volume'], $steamid);
+
+            $settings->volume = $_POST['volume'];
+        }
+
+        $this->design('music/settings', 'MotdPack', [
+            'settings' => $settings
+        ]);
     }
 }
