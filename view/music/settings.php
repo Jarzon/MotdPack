@@ -6,7 +6,7 @@
 
 <form method="post">
     <label for="volume">Music volume:</label>
-    <input id="volume" name="volume" type="range" value="<?=$settings['volume']?>" style="width: 50%;"><br>
+    <input id="volume" name="volume" type="range" value="<?=$settings->volume?>" style="width: 50%;"><br>
 
     <div class="center"><input name="submit" type="submit" value="Save"></div>
 </form>
